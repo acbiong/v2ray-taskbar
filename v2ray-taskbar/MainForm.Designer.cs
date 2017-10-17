@@ -22,6 +22,7 @@ namespace v2ray_taskbar
 		private System.Windows.Forms.ContextMenuStrip contextMenuStripTextBox;
 		private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 开机启动ToolStripMenuItem;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -50,6 +51,7 @@ namespace v2ray_taskbar
             this.contextMenuStripIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.开机启动ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxTaskbar = new System.Windows.Forms.TextBox();
             this.contextMenuStripTextBox = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -73,7 +75,9 @@ namespace v2ray_taskbar
             this.contextMenuStripIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ConfigToolStripMenuItem,
             this.重载ToolStripMenuItem,
-            this.退出ToolStripMenuItem});
+            this.开机启动ToolStripMenuItem,
+            this.退出ToolStripMenuItem
+            });
             this.contextMenuStripIcon.Name = "contextMenuStripV2ray";
             this.contextMenuStripIcon.Size = new System.Drawing.Size(145, 82);
             // 
@@ -90,6 +94,13 @@ namespace v2ray_taskbar
             this.重载ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.重载ToolStripMenuItem.Text = "重载";
             this.重载ToolStripMenuItem.Click += new System.EventHandler(this.V2ray_Click);
+            // 
+            // 开机启动ToolStripMenuItem
+            // 
+            this.开机启动ToolStripMenuItem.Name = "开机启动ToolStripMenuItem";
+            this.开机启动ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.开机启动ToolStripMenuItem.Text = "开机启动";
+            this.开机启动ToolStripMenuItem.Click += new System.EventHandler(this.Auto_Start);
             // 
             // 退出ToolStripMenuItem
             // 

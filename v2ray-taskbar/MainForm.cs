@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
-
+using Microsoft.Win32;
 
 namespace v2ray_taskbar
 {
@@ -120,6 +120,34 @@ namespace v2ray_taskbar
 				Environment.Exit(0);
 			}
 		}
+        // 开机启动
+        void Auto_Start(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = Application.ExecutablePath;
+                RegistryKey rk = Registry.CurrentUser;
+                RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+                if (rk2.GetValue("v2ray_taskbar") == null)
+                {
+                    rk2.SetValue("v2ray_taskbar", path);
+                    rk2.Close();
+                    rk.Close();
+                    MessageBox.Show("已设置开机自启动，再次点击可取消");
+                }
+                else
+                {
+                    rk2.DeleteValue("v2ray_taskbar");
+                    rk2.Close();
+                    rk.Close();
+                    MessageBox.Show("已取消开机自启动，再次点击可打开");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("设置开机启动失败");
+            }
+        }
 		// 重载后台程序
 		void V2ray_Click(object sender, EventArgs e)
 		{
