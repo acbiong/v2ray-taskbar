@@ -79,7 +79,9 @@ namespace v2ray_taskbar
 		void AppendText(string text)
 		{
 			if (this.textBoxTaskbar.InvokeRequired) {
-				Invoke(new AppendTextDelegate(AppendText), new object[] { text });
+				if (IsHandleCreated) {
+					Invoke(new AppendTextDelegate(AppendText), new object[] { text });
+				}
 			} else {
 				this.textBoxTaskbar.AppendText(text);
 			}
